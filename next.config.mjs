@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-    devIndicators: false,
 
+const isGithubPages = process.env.NODE_ENV === 'production';
+const repoName = 'ReserchProject';
+
+
+const nextConfig = {
+    output: 'export',
+    devIndicators: false,
+    trailingSlash: true,
+    basePath: isGithubPages ? `/${repoName}` : '',
+    assetPrefix: isGithubPages ? `/${repoName}/` : '',
 };
 
 export default nextConfig;
