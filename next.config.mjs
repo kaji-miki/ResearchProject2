@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const isGithubPages = process.env.NODE_ENV === 'production';
-const repoName = 'ReserchProject';
+const repoName = 'ResearchProject';
 
 const nextConfig = {
   output: 'export',
