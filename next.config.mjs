@@ -3,6 +3,8 @@
 const isGithubPages = process.env.NODE_ENV === 'production';
 const repoName = 'ResearchProject';
 
+
+
 const nextConfig = {
   output: 'export',
   devIndicators: false,
