@@ -45,6 +45,8 @@ const SurveyForm = () => {
     const [errorFields, setErrorFields] = useState<string[]>([]);
     const [errors, setErrors] = useState<string[]>([]);
     const [hasForcedOnce, setHasForcedOnce] = useState(false);
+    const [thankYouDialogOpen, setThankYouDialogOpen] = useState(false);
+
 
     const topRef = useRef<HTMLDivElement | null>(null);
 
@@ -153,6 +155,7 @@ const SurveyForm = () => {
             const newArray = currentArray.includes(option)
                 ? currentArray.filter((item) => item !== option)
                 : [...currentArray, option];
+
             return {
                 ...prev,
                 [questionKey]: newArray,
@@ -162,8 +165,8 @@ const SurveyForm = () => {
         setErrorFields((prevErrors) => {
             const updatedArray = answers[questionKey] as string[];
             const isChecked = updatedArray.includes(option)
-                ? updatedArray.length > 1 
-                : updatedArray.length >= 0; 
+                ? updatedArray.length > 1
+                : updatedArray.length >= 0;
 
             if (isChecked) {
                 return prevErrors.filter((f) => f !== questionKey);
@@ -544,7 +547,7 @@ const SurveyForm = () => {
                                 <Button variant="outlined" onClick={() => setSubmitted(false)}>
                                     編集に戻る
                                 </Button>
-                                <Button variant="contained" color="primary" >
+                                <Button variant="contained" color="primary" onClick={() => setThankYouDialogOpen(true)}>
                                     送信
                                 </Button>
                             </Box>
@@ -559,6 +562,14 @@ const SurveyForm = () => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleDialogClose}>閉じる</Button>
+                </DialogActions>
+            </Dialog>
+            <Dialog open={thankYouDialogOpen} onClose={() => setThankYouDialogOpen(false)}>
+                <DialogContent>
+                    <Typography>実験へのご協力、ありがとうございました。</Typography>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setThankYouDialogOpen(false)}>閉じる</Button>
                 </DialogActions>
             </Dialog>
         </Box>
