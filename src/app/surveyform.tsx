@@ -215,7 +215,7 @@ const SurveyForm = () => {
                                 <Collapse in={!openDialog && visible.q1}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/typing.png"
+                                            src="/ReserchProject2/typing.png"
                                             alt="入力エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -242,7 +242,7 @@ const SurveyForm = () => {
                                 <Collapse in={!openDialog && visible.q2}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -267,7 +267,7 @@ const SurveyForm = () => {
                                 <Collapse in={!openDialog && visible.q3}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -295,7 +295,7 @@ const SurveyForm = () => {
                                 <Collapse in={!openDialog && visible.q4}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -318,7 +318,7 @@ const SurveyForm = () => {
                                <Collapse in={!openDialog && visible.q5}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -344,7 +344,7 @@ const SurveyForm = () => {
                               <Collapse in={!openDialog && visible.q6}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -367,7 +367,7 @@ const SurveyForm = () => {
                                <Collapse in={!openDialog && visible.q7}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -393,7 +393,7 @@ const SurveyForm = () => {
                                  <Collapse in={!openDialog && visible.q8}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -416,7 +416,7 @@ const SurveyForm = () => {
                                <Collapse in={!openDialog && visible.q9}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -440,7 +440,7 @@ const SurveyForm = () => {
                                  <Collapse in={!openDialog && visible.q10}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -463,7 +463,7 @@ const SurveyForm = () => {
                                <Collapse in={!openDialog && visible.q11}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -492,7 +492,7 @@ const SurveyForm = () => {
                                 <Collapse in={!openDialog && visible.q12}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/typing.png"
+                                            src="/ReserchProject2/typing.png"
                                             alt="入力エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -511,7 +511,7 @@ const SurveyForm = () => {
                                <Collapse in={!openDialog && visible.q13}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -537,7 +537,7 @@ const SurveyForm = () => {
                                <Collapse in={!openDialog && visible.q14}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -567,7 +567,7 @@ const SurveyForm = () => {
                                 <Collapse in={!openDialog && visible.q15}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/typing.png"
+                                            src="/ReserchProject2/typing.png"
                                             alt="入力エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -593,7 +593,7 @@ const SurveyForm = () => {
                                  <Collapse in={!openDialog && visible.q16}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/typing.png"
+                                            src="/ReserchProject2/typing.png"
                                             alt="入力エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -613,7 +613,7 @@ const SurveyForm = () => {
                                  <Collapse in={!openDialog && visible.q17}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -637,7 +637,7 @@ const SurveyForm = () => {
                                <Collapse in={!openDialog && visible.q18}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -661,7 +661,7 @@ const SurveyForm = () => {
                               <Collapse in={!openDialog && visible.q19}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -684,7 +684,7 @@ const SurveyForm = () => {
                                <Collapse in={!openDialog && visible.q20}timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/select.png"
+                                            src="/ReserchProject2/select.png"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -739,7 +739,7 @@ const SurveyForm = () => {
                 <DialogContent dividers>
                     <Box display="flex" flexDirection="column" alignItems="center" mb={2}>
                         <img
-                            src="/error.png" // public フォルダに配置すること
+                            src="/ReserchProject2/error.png" // public フォルダに配置すること
                             alt="エラーイラスト"
                             style={{ width: '300px', height: 'auto', marginBottom: '16px' }}
                         />
