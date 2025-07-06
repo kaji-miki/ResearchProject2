@@ -7,6 +7,7 @@ import {
     Card,
     CardContent,
     Checkbox,
+    Collapse,
     Dialog,
     DialogActions,
     DialogContent,
@@ -23,6 +24,7 @@ import {
     TextField,
     Typography
 } from '@mui/material';
+import { useVisibleErrorImages } from './useVisibleErrorImages';
 
 const prefectures = [
     '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県',
@@ -46,6 +48,7 @@ const SurveyForm = () => {
     const [errors, setErrors] = useState<string[]>([]);
     const [hasForcedOnce, setHasForcedOnce] = useState(false);
     const [thankYouDialogOpen, setThankYouDialogOpen] = useState(false);
+    const { refs, visible } = useVisibleErrorImages(errorFields);
 
 
     const topRef = useRef<HTMLDivElement | null>(null);
@@ -94,7 +97,6 @@ const SurveyForm = () => {
         let newErrors: string[] = [];
         let newErrorFields: string[] = [];
 
-        // すべての設問キーを定義
         const requiredFields: (keyof Answers)[] = [
             'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10',
             'q11', 'q12', 'q13', 'q14', 'q15', 'q16', 'q17', 'q18', 'q19', 'q20'
@@ -114,8 +116,7 @@ const SurveyForm = () => {
             }
         }
 
-        // エラーが3件未満なら強制エラーを追加（ただし通常エラーと被らないように）
-        // ★ 初回のみ強制エラー発動
+        // エラーが3件未満なら強制エラーを追加
         if (!hasForcedOnce && newErrorFields.length < 3) {
             const needed = 3 - newErrorFields.length;
             const remainingForced = forcedErrorFields.filter(f => !newErrorFields.includes(f));
@@ -125,26 +126,23 @@ const SurveyForm = () => {
                 newErrors.push(`${key.replace('q', '')}. 実験上の強制エラーです`);
                 newErrorFields.push(key);
             });
-            // 強制対象の値を空白化
             setAnswers(prev => {
                 const updated = { ...prev };
                 toForce.forEach(k => {
                     if (Array.isArray(prev[k])) {
-                        updated[k] = [] as any; // string[] として空配列
+                        updated[k] = [] as any;
                     } else {
-                        updated[k] = '' as any; // string として空文字
+                        updated[k] = '' as any;
                     }
                 });
                 return updated;
             });
         }
-
         if (newErrorFields.length > 0) {
             setErrors(newErrors);
             setErrorFields(newErrorFields);
             return false;
         }
-
         return true;
     };
 
@@ -195,7 +193,9 @@ const SurveyForm = () => {
     const handleDialogClose = () => {
         setOpenDialog(false);
         setHasForcedOnce(true);
-        scrollToTop();
+        setTimeout(() => {
+            scrollToTop();
+        }, 0);
     };
 
     return (
@@ -204,7 +204,7 @@ const SurveyForm = () => {
                 <CardContent>
                     {!submitted ? (
                         <FormGroup ref={topRef}>
-                            <FormControl margin="normal" error={errorFields.includes('q1')}>
+                            <FormControl margin="normal" error={errorFields.includes('q1')} ref={refs.q1}>
                                 <FormLabel
                                     sx={{
                                         color: focused1 ? 'primary.main' : '',
@@ -212,6 +212,15 @@ const SurveyForm = () => {
                                     }}
                                 >
                                     1. 年齢</FormLabel>
+                                <Collapse in={!openDialog && visible.q1}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/typing.png"
+                                            alt="入力エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <TextField
                                     type="number"
                                     required
@@ -225,11 +234,20 @@ const SurveyForm = () => {
                                     onFocus={() => setFocused1(true)}
                                     onBlur={() => setFocused1(false)}
                                     error={errorFields.includes('q1')}
-                                    helperText={errorFields.includes('q1') ? "全角数字で入力してください" : ""}
                                 />
+
                             </FormControl>
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q2')}>
+                            <FormControl margin="normal" error={errorFields.includes('q2')} ref={refs.q2}>
                                 <FormLabel >2. 性別</FormLabel>
+                                <Collapse in={!openDialog && visible.q2}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup
                                     row
                                     value={answers.q2}
@@ -244,8 +262,17 @@ const SurveyForm = () => {
                                 </RadioGroup>
                             </FormControl>
 
-                            <FormControl fullWidth margin="normal" error={errorFields.includes('q3')}>
+                            <FormControl fullWidth margin="normal" error={errorFields.includes('q3')} ref={refs.q3}>
                                 <FormLabel>3. お住まいの地域（都道府県）</FormLabel>
+                                <Collapse in={!openDialog && visible.q3}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <Select
                                     value={answers.q3}
                                     onChange={(e) => {
@@ -263,8 +290,17 @@ const SurveyForm = () => {
                                 </Select>
                             </FormControl>
 
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q4')}>
+                            <FormControl  margin="normal" error={errorFields.includes('q4')} ref={refs.q4}>
                                 <FormLabel>4. 普段使う言語を教えてください</FormLabel>
+                                <Collapse in={!openDialog && visible.q4}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup row
                                     value={answers.q4}
                                     onChange={(e) => {
@@ -277,8 +313,17 @@ const SurveyForm = () => {
                                     ))}
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q5')}>
+                            <FormControl  margin="normal" error={errorFields.includes('q5')} ref={refs.q5}>
                                 <FormLabel>5. 利用しているデバイス</FormLabel>
+                               <Collapse in={!openDialog && visible.q5}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <FormGroup row>
                                     {q5Options.map((opt) => (
                                         <FormControlLabel
@@ -294,8 +339,17 @@ const SurveyForm = () => {
                                     ))}
                                 </FormGroup>
                             </FormControl>
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q6')}>
+                            <FormControl margin="normal" error={errorFields.includes('q6')} ref={refs.q6}>
                                 <FormLabel>6. インターネット利用時間</FormLabel>
+                              <Collapse in={!openDialog && visible.q6}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup row
                                     value={answers.q6}
                                     onChange={(e) => {
@@ -308,8 +362,17 @@ const SurveyForm = () => {
                                     ))}
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q7')}>
+                            <FormControl margin="normal" error={errorFields.includes('q7')} ref={refs.q7}>
                                 <FormLabel>7. よく利用するサービス</FormLabel>
+                               <Collapse in={!openDialog && visible.q7}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <FormGroup row>
                                     {q7Options.map((opt) => (
                                         <FormControlLabel
@@ -325,8 +388,17 @@ const SurveyForm = () => {
                                     ))}
                                 </FormGroup>
                             </FormControl>
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q8')}>
+                            <FormControl margin="normal" error={errorFields.includes('q8')} ref={refs.q8}>
                                 <FormLabel>8. 買い物は主にどこで？</FormLabel>
+                                 <Collapse in={!openDialog && visible.q8}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup row
                                     value={answers.q8}
                                     onChange={(e) => {
@@ -339,8 +411,17 @@ const SurveyForm = () => {
                                     ))}
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q9')}>
+                            <FormControl  margin="normal" error={errorFields.includes('q9')} ref={refs.q9}>
                                 <FormLabel>9. 通勤・通学手段</FormLabel>
+                               <Collapse in={!openDialog && visible.q9}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup row
                                     value={answers.q9}
                                     onChange={(e) => {
@@ -354,8 +435,17 @@ const SurveyForm = () => {
                                 </RadioGroup>
                             </FormControl>
 
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q10')}>
+                            <FormControl margin="normal" error={errorFields.includes('q10')} ref={refs.q10}>
                                 <FormLabel>10. 食事スタイル</FormLabel>
+                                 <Collapse in={!openDialog && visible.q10}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup row
                                     value={answers.q10}
                                     onChange={(e) => {
@@ -368,8 +458,17 @@ const SurveyForm = () => {
                                     ))}
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q11')}>
+                            <FormControl margin="normal" error={errorFields.includes('q11')} ref={refs.q11}>
                                 <FormLabel>11. よく見るジャンル</FormLabel>
+                               <Collapse in={!openDialog && visible.q11}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup row
                                     value={answers.q11}
                                     onChange={(e) => {
@@ -382,7 +481,7 @@ const SurveyForm = () => {
                                     ))}
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl fullWidth margin="normal" error={errorFields.includes('q12')}>
+                            <FormControl fullWidth margin="normal" error={errorFields.includes('q12')} ref={refs.q12}>
                                 <FormLabel
                                     sx={{
                                         color: focused12 ? 'primary.main' : '',
@@ -390,6 +489,15 @@ const SurveyForm = () => {
                                     }}>
                                     12. 行ってみたい場所
                                 </FormLabel>
+                                <Collapse in={!openDialog && visible.q12}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/typing.png"
+                                            alt="入力エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <TextField multiline rows={2} margin="normal" fullWidth
                                     value={answers.q12}
                                     onChange={(e) => {
@@ -398,8 +506,17 @@ const SurveyForm = () => {
                                     }}
                                     onFocus={() => setFocused12(true)}
                                     onBlur={() => setFocused12(false)} /></FormControl>
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q13')}>
+                            <FormControl margin="normal" error={errorFields.includes('q13')} ref={refs.q13}>
                                 <FormLabel>13. 音楽ジャンル</FormLabel>
+                               <Collapse in={!openDialog && visible.q13}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <FormGroup row>
                                     {q13Options.map((opt) => (
                                         <FormControlLabel
@@ -415,8 +532,17 @@ const SurveyForm = () => {
                                     ))}
                                 </FormGroup>
                             </FormControl>
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q14')}>
+                            <FormControl margin="normal" error={errorFields.includes('q14')} ref={refs.q14}>
                                 <FormLabel>14. 雨の日の過ごし方</FormLabel>
+                               <Collapse in={!openDialog && visible.q14}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup row
                                     value={answers.q14}
                                     onChange={(e) => {
@@ -429,7 +555,7 @@ const SurveyForm = () => {
                                     ))}
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl fullWidth margin="normal" error={errorFields.includes('q15')}>
+                            <FormControl fullWidth margin="normal" error={errorFields.includes('q15')} ref={refs.q15}>
                                 <FormLabel
                                     sx={{
                                         color: focused15 ? 'primary.main' : '',
@@ -438,6 +564,15 @@ const SurveyForm = () => {
                                 >
                                     15. よく使うアプリ
                                 </FormLabel>
+                                <Collapse in={!openDialog && visible.q15}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/typing.png"
+                                            alt="入力エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <TextField multiline rows={2} margin="normal" fullWidth
                                     value={answers.q15}
                                     onChange={(e) => {
@@ -447,7 +582,7 @@ const SurveyForm = () => {
                                     onFocus={() => setFocused15(true)}
                                     onBlur={() => setFocused15(false)} />
                             </FormControl>
-                            <FormControl fullWidth margin="normal" error={errorFields.includes('q16')}>
+                            <FormControl fullWidth margin="normal" error={errorFields.includes('q16')} ref={refs.q16}>
                                 <FormLabel
                                     sx={{
                                         color: focused16 ? 'primary.main' : '',
@@ -455,6 +590,15 @@ const SurveyForm = () => {
                                     }}
                                 >
                                     16. 最近うれしかったこと</FormLabel>
+                                 <Collapse in={!openDialog && visible.q16}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/typing.png"
+                                            alt="入力エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <TextField multiline rows={2} margin="normal" fullWidth
                                     value={answers.q16}
                                     onChange={(e) => {
@@ -464,8 +608,17 @@ const SurveyForm = () => {
                                     onFocus={() => setFocused16(true)}
                                     onBlur={() => setFocused16(false)} />
                             </FormControl>
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q17')}>
+                            <FormControl margin="normal" error={errorFields.includes('q17')} ref={refs.q17}>
                                 <FormLabel>17. 困ったときの相談相手</FormLabel>
+                                 <Collapse in={!openDialog && visible.q17}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup row
                                     value={answers.q17}
                                     onChange={(e) => {
@@ -479,8 +632,17 @@ const SurveyForm = () => {
                                 </RadioGroup>
                             </FormControl>
 
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q18')}>
+                            <FormControl margin="normal" error={errorFields.includes('q18')} ref={refs.q18}>
                                 <FormLabel>18. ストレス対処法</FormLabel>
+                               <Collapse in={!openDialog && visible.q18}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup row
                                     value={answers.q18}
                                     onChange={(e) => {
@@ -494,8 +656,17 @@ const SurveyForm = () => {
                                 </RadioGroup>
                             </FormControl>
 
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q19')}>
+                            <FormControl margin="normal" error={errorFields.includes('q19')} ref={refs.q19}>
                                 <FormLabel>19. リラックス方法</FormLabel>
+                              <Collapse in={!openDialog && visible.q19}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup row
                                     value={answers.q19}
                                     onChange={(e) => {
@@ -508,8 +679,17 @@ const SurveyForm = () => {
                                     ))}
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl component="fieldset" margin="normal" error={errorFields.includes('q20')}>
+                            <FormControl margin="normal" error={errorFields.includes('q20')} ref={refs.q20}>
                                 <FormLabel>20. アンケートは答えやすかった？</FormLabel>
+                               <Collapse in={!openDialog && visible.q20}timeout={600} >
+                                    <Box mt={1}>
+                                        <img
+                                            src="/select.png"
+                                            alt="選択エラー"
+                                            style={{ maxWidth: 300, width: '100%' }}
+                                        />
+                                    </Box>
+                                </Collapse>
                                 <RadioGroup row
                                     value={answers.q20}
                                     onChange={(e) => {
@@ -556,9 +736,19 @@ const SurveyForm = () => {
                 </CardContent>
             </Card>
             <Dialog open={openDialog} onClose={handleDialogClose}>
-                <DialogTitle>入力エラーがあります</DialogTitle>
-                <DialogContent>
-                    {errors.map((e, i) => <Typography key={i} color="error">{e}</Typography>)}
+                <DialogContent dividers>
+                    <Box display="flex" flexDirection="column" alignItems="center" mb={2}>
+                        <img
+                            src="/error.png" // public フォルダに配置すること
+                            alt="エラーイラスト"
+                            style={{ width: '300px', height: 'auto', marginBottom: '16px' }}
+                        />
+                    </Box>
+                    {errors.map((e, i) => (
+                        <Typography key={i} color="error" sx={{ mb: 1 }}>
+                            {e}
+                        </Typography>
+                    ))}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleDialogClose}>閉じる</Button>
