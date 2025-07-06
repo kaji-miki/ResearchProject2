@@ -739,7 +739,7 @@ const SurveyForm = () => {
                 <DialogContent dividers>
                     <Box display="flex" flexDirection="column" alignItems="center" mb={2}>
                         <img
-                            src="/ReserchProject2/error.png" // public フォルダに配置すること
+                            src="/ResearchProject2/error.png" // public フォルダに配置すること
                             alt="エラーイラスト"
                             style={{ width: '300px', height: 'auto', marginBottom: '16px' }}
                         />
