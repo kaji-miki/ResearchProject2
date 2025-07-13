@@ -17,6 +17,7 @@ import {
     FormGroup,
     FormLabel,
     InputLabel,
+    Link,
     MenuItem,
     Radio,
     RadioGroup,
@@ -212,10 +213,10 @@ const SurveyForm = () => {
                                     }}
                                 >
                                     1. 年齢</FormLabel>
-                                <Collapse in={!openDialog && visible.q1}timeout={600} >
+                                <Collapse in={!openDialog && visible.q1} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/typing.png"
+                                            src="/ResearchProject2/typing.jpg"
                                             alt="入力エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -239,10 +240,10 @@ const SurveyForm = () => {
                             </FormControl>
                             <FormControl margin="normal" error={errorFields.includes('q2')} ref={refs.q2}>
                                 <FormLabel >2. 性別</FormLabel>
-                                <Collapse in={!openDialog && visible.q2}timeout={600} >
+                                <Collapse in={!openDialog && visible.q2} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -264,10 +265,10 @@ const SurveyForm = () => {
 
                             <FormControl fullWidth margin="normal" error={errorFields.includes('q3')} ref={refs.q3}>
                                 <FormLabel>3. お住まいの地域（都道府県）</FormLabel>
-                                <Collapse in={!openDialog && visible.q3}timeout={600} >
+                                <Collapse in={!openDialog && visible.q3} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -290,12 +291,12 @@ const SurveyForm = () => {
                                 </Select>
                             </FormControl>
 
-                            <FormControl  margin="normal" error={errorFields.includes('q4')} ref={refs.q4}>
+                            <FormControl margin="normal" error={errorFields.includes('q4')} ref={refs.q4}>
                                 <FormLabel>4. 普段使う言語を教えてください</FormLabel>
-                                <Collapse in={!openDialog && visible.q4}timeout={600} >
+                                <Collapse in={!openDialog && visible.q4} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -313,12 +314,12 @@ const SurveyForm = () => {
                                     ))}
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl  margin="normal" error={errorFields.includes('q5')} ref={refs.q5}>
+                            <FormControl margin="normal" error={errorFields.includes('q5')} ref={refs.q5}>
                                 <FormLabel>5. 利用しているデバイス</FormLabel>
-                               <Collapse in={!openDialog && visible.q5}timeout={600} >
+                                <Collapse in={!openDialog && visible.q5} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -341,10 +342,10 @@ const SurveyForm = () => {
                             </FormControl>
                             <FormControl margin="normal" error={errorFields.includes('q6')} ref={refs.q6}>
                                 <FormLabel>6. インターネット利用時間</FormLabel>
-                              <Collapse in={!openDialog && visible.q6}timeout={600} >
+                                <Collapse in={!openDialog && visible.q6} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -364,10 +365,10 @@ const SurveyForm = () => {
                             </FormControl>
                             <FormControl margin="normal" error={errorFields.includes('q7')} ref={refs.q7}>
                                 <FormLabel>7. よく利用するサービス</FormLabel>
-                               <Collapse in={!openDialog && visible.q7}timeout={600} >
+                                <Collapse in={!openDialog && visible.q7} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -390,10 +391,10 @@ const SurveyForm = () => {
                             </FormControl>
                             <FormControl margin="normal" error={errorFields.includes('q8')} ref={refs.q8}>
                                 <FormLabel>8. 買い物は主にどこで？</FormLabel>
-                                 <Collapse in={!openDialog && visible.q8}timeout={600} >
+                                <Collapse in={!openDialog && visible.q8} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -411,12 +412,12 @@ const SurveyForm = () => {
                                     ))}
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl  margin="normal" error={errorFields.includes('q9')} ref={refs.q9}>
+                            <FormControl margin="normal" error={errorFields.includes('q9')} ref={refs.q9}>
                                 <FormLabel>9. 通勤・通学手段</FormLabel>
-                               <Collapse in={!openDialog && visible.q9}timeout={600} >
+                                <Collapse in={!openDialog && visible.q9} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -437,10 +438,10 @@ const SurveyForm = () => {
 
                             <FormControl margin="normal" error={errorFields.includes('q10')} ref={refs.q10}>
                                 <FormLabel>10. 食事スタイル</FormLabel>
-                                 <Collapse in={!openDialog && visible.q10}timeout={600} >
+                                <Collapse in={!openDialog && visible.q10} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -460,10 +461,10 @@ const SurveyForm = () => {
                             </FormControl>
                             <FormControl margin="normal" error={errorFields.includes('q11')} ref={refs.q11}>
                                 <FormLabel>11. よく見るジャンル</FormLabel>
-                               <Collapse in={!openDialog && visible.q11}timeout={600} >
+                                <Collapse in={!openDialog && visible.q11} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -489,10 +490,10 @@ const SurveyForm = () => {
                                     }}>
                                     12. 行ってみたい場所
                                 </FormLabel>
-                                <Collapse in={!openDialog && visible.q12}timeout={600} >
+                                <Collapse in={!openDialog && visible.q12} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/typing.png"
+                                            src="/ResearchProject2/typing.jpg"
                                             alt="入力エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -505,13 +506,14 @@ const SurveyForm = () => {
                                         if (e.target.value) setErrorFields(prev => prev.filter(f => f !== 'q12'));
                                     }}
                                     onFocus={() => setFocused12(true)}
-                                    onBlur={() => setFocused12(false)} /></FormControl>
+                                    onBlur={() => setFocused12(false)} 
+                                    error={errorFields.includes('q12')}/></FormControl>
                             <FormControl margin="normal" error={errorFields.includes('q13')} ref={refs.q13}>
                                 <FormLabel>13. 音楽ジャンル</FormLabel>
-                               <Collapse in={!openDialog && visible.q13}timeout={600} >
+                                <Collapse in={!openDialog && visible.q13} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -534,10 +536,10 @@ const SurveyForm = () => {
                             </FormControl>
                             <FormControl margin="normal" error={errorFields.includes('q14')} ref={refs.q14}>
                                 <FormLabel>14. 雨の日の過ごし方</FormLabel>
-                               <Collapse in={!openDialog && visible.q14}timeout={600} >
+                                <Collapse in={!openDialog && visible.q14} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -564,10 +566,10 @@ const SurveyForm = () => {
                                 >
                                     15. よく使うアプリ
                                 </FormLabel>
-                                <Collapse in={!openDialog && visible.q15}timeout={600} >
+                                <Collapse in={!openDialog && visible.q15} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/typing.png"
+                                            src="/ResearchProject2/typing.jpg"
                                             alt="入力エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -580,7 +582,9 @@ const SurveyForm = () => {
                                         if (e.target.value) setErrorFields(prev => prev.filter(f => f !== 'q15'));
                                     }}
                                     onFocus={() => setFocused15(true)}
-                                    onBlur={() => setFocused15(false)} />
+                                    onBlur={() => setFocused15(false)}
+                                    error={errorFields.includes('q15')}
+                                    />
                             </FormControl>
                             <FormControl fullWidth margin="normal" error={errorFields.includes('q16')} ref={refs.q16}>
                                 <FormLabel
@@ -590,10 +594,10 @@ const SurveyForm = () => {
                                     }}
                                 >
                                     16. 最近うれしかったこと</FormLabel>
-                                 <Collapse in={!openDialog && visible.q16}timeout={600} >
+                                <Collapse in={!openDialog && visible.q16} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/typing.png"
+                                            src="/ResearchProject2/typing.jpg"
                                             alt="入力エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -606,14 +610,16 @@ const SurveyForm = () => {
                                         if (e.target.value) setErrorFields(prev => prev.filter(f => f !== 'q16'));
                                     }}
                                     onFocus={() => setFocused16(true)}
-                                    onBlur={() => setFocused16(false)} />
+                                    onBlur={() => setFocused16(false)} 
+                                    error={errorFields.includes('q16')}
+                                    />
                             </FormControl>
                             <FormControl margin="normal" error={errorFields.includes('q17')} ref={refs.q17}>
                                 <FormLabel>17. 困ったときの相談相手</FormLabel>
-                                 <Collapse in={!openDialog && visible.q17}timeout={600} >
+                                <Collapse in={!openDialog && visible.q17} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -634,10 +640,10 @@ const SurveyForm = () => {
 
                             <FormControl margin="normal" error={errorFields.includes('q18')} ref={refs.q18}>
                                 <FormLabel>18. ストレス対処法</FormLabel>
-                               <Collapse in={!openDialog && visible.q18}timeout={600} >
+                                <Collapse in={!openDialog && visible.q18} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -658,10 +664,10 @@ const SurveyForm = () => {
 
                             <FormControl margin="normal" error={errorFields.includes('q19')} ref={refs.q19}>
                                 <FormLabel>19. リラックス方法</FormLabel>
-                              <Collapse in={!openDialog && visible.q19}timeout={600} >
+                                <Collapse in={!openDialog && visible.q19} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -681,10 +687,10 @@ const SurveyForm = () => {
                             </FormControl>
                             <FormControl margin="normal" error={errorFields.includes('q20')} ref={refs.q20}>
                                 <FormLabel>20. アンケートは答えやすかった？</FormLabel>
-                               <Collapse in={!openDialog && visible.q20}timeout={600} >
+                                <Collapse in={!openDialog && visible.q20} timeout={600} >
                                     <Box mt={1}>
                                         <img
-                                            src="/ResearchProject2/select.png"
+                                            src="/ResearchProject2/select.jpg"
                                             alt="選択エラー"
                                             style={{ maxWidth: 300, width: '100%' }}
                                         />
@@ -739,28 +745,57 @@ const SurveyForm = () => {
                 <DialogContent dividers>
                     <Box display="flex" flexDirection="column" alignItems="center" mb={2}>
                         <img
-                            src="/ResearchProject2/error.png" // public フォルダに配置すること
+                            src="/ResearchProject2/error.jpg" // public フォルダに配置すること
                             alt="エラーイラスト"
                             style={{ width: '300px', height: 'auto', marginBottom: '16px' }}
                         />
                     </Box>
-                    {errors.map((e, i) => (
-                        <Typography key={i} color="error" sx={{ mb: 1 }}>
-                            {e}
-                        </Typography>
-                    ))}
+                   <Box display="flex" flexWrap="wrap" gap={2}>
+                        {errors
+                            .slice()
+                            .sort((a, b) => {
+                                const numA = parseInt(a.match(/^(\d+)\./)?.[1] || '0', 10);
+                                const numB = parseInt(b.match(/^(\d+)\./)?.[1] || '0', 10);
+                                return numA - numB;
+                            })
+                            .map((msg, i) => {
+                                const numMatch = msg.match(/^(\d+)\./);
+                                const num = numMatch ? numMatch[1] : '??';
+                                const isForced = msg.includes('強制エラー');
+
+                                return (
+                                    <Typography
+                                        key={i}
+                                        sx={{
+                                            color: isForced ? 'error.main' : 'orange',
+                                            fontWeight: 'bold',
+                                            fontSize: '1.2rem',
+                                        }}
+                                    >
+                                        {num}
+                                    </Typography>
+                                );
+                            })}
+                    </Box>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleDialogClose}>閉じる</Button>
                 </DialogActions>
             </Dialog>
             <Dialog open={thankYouDialogOpen} onClose={() => setThankYouDialogOpen(false)}>
+                <DialogTitle>実験へのご協力、ありがとうございました。</DialogTitle>
                 <DialogContent>
-                    <Typography>実験へのご協力、ありがとうございました。</Typography>
+                    <Typography>
+                        <Link
+                            href="https://www.keithv.com/software/nasatlx/nasatlx-ja.html"
+                            underline="hover"
+                            sx={{ ml: 1 }}
+                        >
+                            こちら
+                        </Link>
+                        よりアンケートへお答えください。
+                    </Typography>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setThankYouDialogOpen(false)}>閉じる</Button>
-                </DialogActions>
             </Dialog>
         </Box>
     );
